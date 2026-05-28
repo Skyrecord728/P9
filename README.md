@@ -56,7 +56,7 @@ TOKEN=<上一步返回的token>
 curl -s http://localhost:8080/api/menus/my-tree \
   -H "Authorization: $TOKEN"
 ```
-其中 TOKEN 变量需要以 ******
+其中 `TOKEN` 变量应为 `Authorization` 请求头的完整值（前缀 + token 字符串）。
 
 3) 验证 ADMIN 接口权限
 ```bash
