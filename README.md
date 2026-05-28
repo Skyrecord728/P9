@@ -66,3 +66,10 @@ curl -i http://localhost:8080/api/admin/ping \
 
 # admin 登录后拿 token 再访问会 200
 ```
+
+## 7. Postman Collection
+- 文件路径：`postman/P9-RBAC.postman_collection.json`
+- 覆盖场景：
+  - 登录（USER + ADMIN）
+  - 当前用户菜单树：`GET /api/menus/my-tree`
+  - ADMIN 权限验证：普通用户访问 `GET /api/admin/ping` 预期 403，管理员访问预期 200
