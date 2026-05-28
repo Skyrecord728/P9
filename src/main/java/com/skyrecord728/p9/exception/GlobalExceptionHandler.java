@@ -27,8 +27,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(Map.of("message", msg));
     }
 
-    @ExceptionHandler({BadCredentialsException.class, DisabledException.class})
-    public ResponseEntity<Map<String, String>> handleAuth(RuntimeException ex) {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "用户名或密码错误，或账号已禁用"));
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<Map<String, String>> handleBadCredentials(BadCredentialsException ex) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "用户名或密码错误"));
+    }
+
+    @ExceptionHandler(DisabledException.class)
+    public ResponseEntity<Map<String, String>> handleDisabled(DisabledException ex) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "账号已禁用"));
     }
 }

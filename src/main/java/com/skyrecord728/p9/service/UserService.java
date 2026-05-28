@@ -43,6 +43,9 @@ public class UserService {
     }
 
     public UserResponse create(UserRequest request) {
+        if (request.getPassword() == null || request.getPassword().isBlank()) {
+            throw new IllegalArgumentException("密码不能为空");
+        }
         SysUser user = new SysUser();
         user.setUsername(request.getUsername());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
@@ -54,7 +57,9 @@ public class UserService {
         SysUser user = findById(id);
         user.setUsername(request.getUsername());
         user.setStatus(request.getStatus());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        if (request.getPassword() != null && !request.getPassword().isBlank()) {
+            user.setPassword(passwordEncoder.encode(request.getPassword()));
+        }
         return toResponse(userRepository.save(user));
     }
 

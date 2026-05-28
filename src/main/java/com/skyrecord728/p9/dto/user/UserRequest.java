@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotNull;
 public class UserRequest {
     @NotBlank
     private String username;
-    @NotBlank
     private String password;
     @NotNull
     private Byte status;

@@ -1,3 +1,5 @@
+-- admin/admin123
+-- user/user123
 INSERT INTO sys_user (id, username, password, status) VALUES
 (1, 'admin', '$2b$12$ieO2GtoUAp/pWUCOJxt3PeGWgZfuT4NsCoCntpxE/d6aRaEXmDrYO', 1),
 (2, 'user', '$2b$12$rMYUq1esa/t9nsj3fP/BUeElaeJMSdDfNHFY.i.e67zUC3miImnBO', 1);

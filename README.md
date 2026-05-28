@@ -12,7 +12,7 @@
 ```sql
 CREATE DATABASE p9_rbac DEFAULT CHARACTER SET utf8mb4;
 ```
-2. 修改配置：`/tmp/workspace/Skyrecord728/P9/src/main/resources/application.yml`
+2. 修改配置：`src/main/resources/application.yml`
 ```yaml
 spring:
   datasource:
@@ -24,7 +24,7 @@ spring:
 
 ## 3. 启动
 ```bash
-cd /tmp/workspace/Skyrecord728/P9
+cd <project-root>
 mvn -q package
 mvn spring-boot:run
 ```
@@ -52,16 +52,17 @@ curl -s -X POST http://localhost:8080/api/auth/login \
 
 2) 获取普通用户菜单树（只返回 visible=1 且角色授权菜单）
 ```bash
-TOKEN="******"
+TOKEN=<上一步返回的token>
 curl -s http://localhost:8080/api/menus/my-tree \
-  -H "Authorization:${TOKEN}"
+  -H "Authorization: $TOKEN"
 ```
+其中 TOKEN 变量需要以 ******
 
 3) 验证 ADMIN 接口权限
 ```bash
 # 普通用户 token 访问会 403
 curl -i http://localhost:8080/api/admin/ping \
-  -H "Authorization:${TOKEN}"
+  -H "Authorization: $TOKEN"
 
 # admin 登录后拿 token 再访问会 200
 ```
